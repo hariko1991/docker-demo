@@ -215,14 +215,14 @@
                     <execution>
                         <id>upload-deploy</id>
                         <!-- 这个插件整合到maven的site阶段执行下面的两个goal -->
-                        <phase>package</phase>
+                        <phase>install</phase>
                         <goals>
                             <goal>upload-single</goal>
                             <goal>sshexec</goal>
                         </goals>
                         <configuration>
                             <fromFile>${project.basedir}/target/${project.name}-${project.version}.tar.gz</fromFile>
-                            <url>scp://hariko:hariko@192.168.0.161:/home/hariko/temp/project</url>
+                            <url>scp://hariko:hariko@192.168.0.161/home/hariko/temp/project</url>
                             <commands>
                                 <command>
                                     if [ -d /home/hariko/temp/project/${project.name}/bin ]; then
@@ -230,12 +230,12 @@
                                     fi
                                 </command>
                                 <command>rm -rf /home/hariko/temp/project/${project.name}</command>
-                                <command>cd /home/hariko/temp/project; tar zxvf
-                                    ${project.name}-${project.version}.tar.gz;
-                                </command>
-                                <command>cd /home/hariko/temp/project//${project.name}/bin;sh ./start.sh ${project.name} ${docker.demo.jar};
-                                </command>
+                                <command>cd /home/hariko/temp/project; tar -zxvf ${project.name}-${project.version}.tar.gz;</command>
+                                <command>cd /home/hariko/temp/project/${project.name}/bin;sh ./build.sh</command>
+                                <!-- <command>sh ./start.sh ${project.name} ${docker.demo.jar};</command> -->
+                                <!-- <command>./build.sh;</command> -->
                             </commands>
+                            <displayCommandOutputs>true</displayCommandOutputs>
                         </configuration>
                     </execution>
                 </executions>

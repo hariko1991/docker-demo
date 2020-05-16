@@ -37,6 +37,15 @@
             </includes>
         </fileSet>
         <fileSet>
+            <directory>target</directory>
+            <outputDirectory>${file.separator}bin</outputDirectory>
+            <fileMode>755</fileMode>
+            <includes>
+                <include>build.sh</include>
+                <include>Dockerfile</include>
+            </includes>
+        </fileSet>
+        <fileSet>
             <directory>lib</directory>
             <outputDirectory>lib</outputDirectory>
             <fileMode>0644</fileMode>

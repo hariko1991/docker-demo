@@ -1,7 +1,7 @@
 #!/bin/bash
 
-SERVER_NAME='bonade-file-preview'
-JAR_NAME='bonade-file-preview-1.0.jar'
+SERVER_NAME=$1
+JAR_NAME=$2
 cd `dirname $0`
 BIN_DIR=`pwd`
 cd ..
